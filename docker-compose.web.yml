@@ -1,0 +1,10 @@
+services:
+  radio-web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: radio-player-web
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+

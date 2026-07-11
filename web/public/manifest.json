@@ -1,0 +1,22 @@
+{
+  "short_name": "Subwave",
+  "name": "Subwave Desktop Radio",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "background_color": "#07090d",
+  "theme_color": "#45f3ff",
+  "display": "standalone",
+  "orientation": "portrait"
+}

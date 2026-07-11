@@ -1,0 +1,12 @@
+{
+  "appId": "com.subwave.radio",
+  "appName": "Subwave",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true,
+    "allowNavigation": [
+      "100.109.43.62"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+# Other project kept in this parent workspace
+MediaHub/
+mediahub-*.png
+
+# Local Codex and runtime state
+.agents/
+.codex/
+.dotnet_home/
+tmp/
+recordings/
+__pycache__/
+*.py[cod]
+
+# Personal radio state and local configuration
+settings.json
+station_order.json
+.env
+.env.*
+
+# JavaScript and Android generated output
+node_modules/
+web/node_modules/
+web/dist/
+web/android/.gradle/
+web/android/build/
+web/android/app/build/
+
+# Python environments and build output
+.venv/
+venv/
+env/
+build/
+dist/
+*.log
+
+# Editor state
+.vs/
+.idea/

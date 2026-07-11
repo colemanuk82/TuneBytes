@@ -1,0 +1,15 @@
+services:
+  radio:
+    build: .
+    container_name: radio-player
+    ports:
+      - "6080:6080"
+    environment:
+      RADIO_DATA_DIR: /data
+      VNC_RESOLUTION: 1280x800x24
+    volumes:
+      - radio_data:/data
+    restart: unless-stopped
+
+volumes:
+  radio_data:
