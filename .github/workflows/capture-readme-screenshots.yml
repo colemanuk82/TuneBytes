@@ -32,15 +32,16 @@ jobs:
       - name: Capture application screenshots
         working-directory: web
         run: |
-          npm run dev -- --host 127.0.0.1 > /tmp/internet-radio-vite.log 2>&1 &
-          sleep 10
-          curl --fail http://127.0.0.1:5173 > /dev/null
+          npm run build
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/internet-radio-vite.log 2>&1 &
+          sleep 8
+          curl --fail http://127.0.0.1:4173 > /dev/null || { cat /tmp/internet-radio-vite.log; exit 1; }
           mkdir -p ../docs/screenshots
           node --input-type=module <<'SCRIPT'
           import { chromium } from "playwright";
           const browser = await chromium.launch();
           const page = await browser.newPage({ viewport: { width: 1440, height: 960 } });
-          await page.goto("http://127.0.0.1:5173", { waitUntil: "networkidle" });
+          await page.goto("http://127.0.0.1:4173", { waitUntil: "networkidle" });
           await page.waitForTimeout(1500);
           await page.screenshot({ path: "../docs/screenshots/station-grid.png", fullPage: true });
           await page.getByRole("button", { name: "Switch to cover flow" }).click();
