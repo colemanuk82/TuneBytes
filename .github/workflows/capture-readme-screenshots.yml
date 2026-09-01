@@ -29,15 +29,12 @@ jobs:
           npm install --no-save playwright
           npx playwright install --with-deps chromium
 
-      - name: Start Internet Radio
-        working-directory: web
-        run: |
-          npm run dev -- --host 127.0.0.1 > /tmp/internet-radio-vite.log 2>&1 &
-          npx --yes wait-on http://127.0.0.1:5173 --timeout 120000
-
       - name: Capture application screenshots
         working-directory: web
         run: |
+          npm run dev -- --host 127.0.0.1 > /tmp/internet-radio-vite.log 2>&1 &
+          sleep 10
+          curl --fail http://127.0.0.1:5173 > /dev/null
           mkdir -p ../docs/screenshots
           node --input-type=module <<'SCRIPT'
           import { chromium } from "playwright";
