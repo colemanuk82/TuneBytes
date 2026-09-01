@@ -27,7 +27,7 @@ Access to a stream may be subject to the station operator's terms, copyright rul
 
 ## SUB/WAVE
 
-SUB/WAVE is retained as the name of one configured station. It is distinct from the application name, which is **Internet Radio**. The Nginx route `/streams/subwave` and Android package identifier `com.subwave.radio` are retained as technical compatibility identifiers.
+SUB/WAVE is retained as the name of one configured station. It is distinct from the application name, which is **Internet Radio**. The Nginx route `/streams/subwave` is retained as a technical compatibility identifier.
 
 ## Apple/iTunes artwork
 
