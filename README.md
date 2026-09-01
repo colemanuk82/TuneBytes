@@ -5,14 +5,13 @@
 <h1 align="center">Internet Radio</h1>
 
 <p align="center">
-  A neon-styled, self-hostable internet radio player for the web, Windows/Linux desktop, Android, Docker, and Unraid.
+  A neon-styled, self-hostable internet radio player for the web, Windows/Linux desktop, Docker, and Unraid.
 </p>
 
 <p align="center">
   <a href="#quick-start">Quick start</a> ·
   <a href="#features">Features</a> ·
   <a href="#self-hosting-with-docker">Docker</a> ·
-  <a href="#android-app">Android</a> ·
   <a href="#third-party-content-and-trademarks">Disclosures</a>
 </p>
 
@@ -38,7 +37,7 @@ Internet Radio ships with a visual station library and supports custom station a
 
 Internet Radio is a personal radio dashboard built in two forms:
 
-- A modern React/Vite web application, designed for browsers, self-hosting, PWA installation, and a Capacitor-based Android wrapper.
+- A modern React/Vite web application, designed for browsers, self-hosting, and PWA installation.
 - A feature-rich PyQt6 desktop application with native playback, stream recording, listening history, mini-player mode, and local data persistence.
 
 The project includes a curated starter list of stations, but it is designed to be personalised with your own stream URLs, station names, icons, and local music folders.
@@ -114,7 +113,7 @@ The project includes a curated starter list of stations, but it is designed to b
 - Drag-and-drop aware desktop controls.
 - Local-file playback through the native media engine.
 
-### Web, PWA, and mobile features
+### Web and PWA features
 
 - Responsive React 19 interface.
 - Vite development and production builds.
@@ -122,8 +121,7 @@ The project includes a curated starter list of stations, but it is designed to b
 - Lightweight service worker for core static assets.
 - Touch-friendly cover-flow controls.
 - Browser-local persistence through `localStorage`.
-- Capacitor Android project included under `web/android/`.
-- Mobile portrait orientation and maskable launcher icons.
+- Responsive mobile layout and maskable PWA icons.
 
 ### Self-hosting and deployment
 
@@ -139,7 +137,7 @@ The project includes a curated starter list of stations, but it is designed to b
 
 | Path | Purpose |
 | --- | --- |
-| `web/` | React/Vite web app, PWA assets, and Android Capacitor project |
+| `web/` | React/Vite web app and PWA assets |
 | `web/src/App.jsx` | Main web interface and playback logic |
 | `web/src/stations.js` | Bundled web station list |
 | `main.pyw` | Desktop application entry point |
@@ -274,32 +272,6 @@ Desktop runtime state is kept in the `radio_data` volume:
 
 > Browser audio forwarding from a Linux desktop container depends on the Docker host's PulseAudio/PipeWire setup. Use the React web container when straightforward browser playback is the priority.
 
-## Android app
-
-The Capacitor project is included in `web/android/`.
-
-Requirements:
-
-- Android Studio or Android SDK command-line tools
-- JDK 17 or newer
-- `ANDROID_HOME` configured
-
-From the `web/` directory:
-
-```powershell
-npm.cmd run android:build
-```
-
-The debug APK is generated at:
-
-```text
-web/android/app/build/outputs/apk/debug/app-debug.apk
-```
-
-The current Android wrapper is configured to load a hosted instance. Before distributing an APK, update the server address and `allowNavigation` entry in `web/capacitor.config.json`. See [SELFHOSTING-WEB.md](SELFHOSTING-WEB.md) for the SUB/WAVE proxy and Tailscale example.
-
-The existing Android application ID, `com.subwave.radio`, is retained for upgrade compatibility even though the visible app name is Internet Radio.
-
 ## Adding or changing stations
 
 ### In the interface
@@ -338,7 +310,6 @@ Only include streams you are permitted to access and redistribute. Stream URLs c
 - HLS metadata support differs from ICY metadata support.
 - Stream addresses and station availability can change without notice.
 - Browser folder stations are session-based because local file handles and object URLs are not permanently portable.
-- The Android wrapper must be configured for the address of your own hosted instance.
 - noVNC desktop audio requires host-specific audio configuration.
 
 ## Privacy
