@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">Subwave</string>
-    <string name="title_activity_main">Subwave</string>
-    <string name="package_name">com.subwave.radio</string>
-    <string name="custom_url_scheme">com.subwave.radio</string>
-</resources>
