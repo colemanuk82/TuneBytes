@@ -31,14 +31,6 @@ STATIONS = [
         "is_custom": False,
     },
     {
-        "name": "BBC Radio 1",
-        "url": "http://as-hls-ww-live.akamaized.net/pool_01505109/live/ww/bbc_radio_one/bbc_radio_one.isml/bbc_radio_one-audio%3d96000.norewind.m3u8",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/BBC_Radio_1_logo_2021.svg/512px-BBC_Radio_1_logo_2021.svg.png",
-        "art": "ðŸŽ™ï¸",
-        "enabled": True,
-        "is_custom": False,
-    },
-    {
         "name": "GB News Radio",
         "url": "https://listen-gbnews.sharp-stream.com/gbnews.mp3",
         "logo": "https://www.gbnews.com/assets/v2/img/gb-news-logo-logo.png",
