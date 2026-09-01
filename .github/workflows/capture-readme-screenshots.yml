@@ -1,0 +1,61 @@
+name: Capture README screenshots
+
+on:
+  push:
+    paths:
+      - ".github/workflows/capture-readme-screenshots.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install application and browser
+        working-directory: web
+        run: |
+          npm ci
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Start Internet Radio
+        working-directory: web
+        run: |
+          npm run dev -- --host 127.0.0.1 > /tmp/internet-radio-vite.log 2>&1 &
+          npx --yes wait-on http://127.0.0.1:5173 --timeout 120000
+
+      - name: Capture application screenshots
+        working-directory: web
+        run: |
+          mkdir -p ../docs/screenshots
+          node --input-type=module <<'SCRIPT'
+          import { chromium } from "playwright";
+          const browser = await chromium.launch();
+          const page = await browser.newPage({ viewport: { width: 1440, height: 960 } });
+          await page.goto("http://127.0.0.1:5173", { waitUntil: "networkidle" });
+          await page.waitForTimeout(1500);
+          await page.screenshot({ path: "../docs/screenshots/station-grid.png", fullPage: true });
+          await page.getByRole("button", { name: "Switch to cover flow" }).click();
+          await page.waitForTimeout(800);
+          await page.screenshot({ path: "../docs/screenshots/cover-flow.png", fullPage: true });
+          await page.getByRole("button", { name: "Show options" }).click();
+          await page.waitForTimeout(800);
+          await page.screenshot({ path: "../docs/screenshots/options.png", fullPage: true });
+          await browser.close();
+          SCRIPT
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: internet-radio-screenshots
+          path: docs/screenshots/*.png
+          if-no-files-found: error
