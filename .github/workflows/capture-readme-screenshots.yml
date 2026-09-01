@@ -1,4 +1,5 @@
 name: Capture README screenshots
+# Capture source after excluded stations are removed
 
 on:
   push:
