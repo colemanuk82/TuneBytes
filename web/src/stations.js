@@ -18,11 +18,6 @@ export const stations = [
     logo: logoUrl("capital_dance_uk.png"),
   },
   {
-    name: "BBC Radio 1",
-    url: "http://as-hls-ww-live.akamaized.net/pool_01505109/live/ww/bbc_radio_one/bbc_radio_one.isml/bbc_radio_one-audio%3d96000.norewind.m3u8",
-    logo: logoUrl("BBC_Radio_1.png"),
-  },
-  {
     name: "Heart Dance",
     url: "http://icecast.thisisdax.com/HeartDanceMP3",
     logo: logoUrl("heart_dance.png"),
