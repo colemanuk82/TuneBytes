@@ -3,10 +3,15 @@
 from __future__ import annotations
 
 import os
+import sys
 
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.environ.get("RADIO_DATA_DIR", SCRIPT_DIR)
+if getattr(sys, "frozen", False):
+    DEFAULT_DATA_DIR = os.path.join(os.environ.get("LOCALAPPDATA", os.path.expanduser("~")), "TuneBytes")
+else:
+    DEFAULT_DATA_DIR = SCRIPT_DIR
+DATA_DIR = os.environ.get("RADIO_DATA_DIR", DEFAULT_DATA_DIR)
 SAVE_FILE_PATH = os.path.join(DATA_DIR, "station_order.json")
 SETTINGS_FILE_PATH = os.path.join(DATA_DIR, "settings.json")
 LOGOS_DIR = os.path.join(DATA_DIR, "logos")
