@@ -2261,7 +2261,7 @@ class ModernRadioApp(QMainWindow):
         self.add_track_history(title)
         
         station = STATIONS[self.current_index]
-        if station["name"] not in ("BBC Radio 1", "GB News Radio") and not station.get("is_custom", False):
+        if station["name"] != "GB News Radio" and not station.get("is_custom", False):
             self.art_search_worker.search_track(title)
 
     def add_track_history(self, title):
