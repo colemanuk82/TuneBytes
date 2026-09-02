@@ -2096,8 +2096,9 @@ class ModernRadioApp(QMainWindow):
     def station_logo_pixmap_for(self, station):
         local_filename = sanitize_filename(station["name"])
         local_path = os.path.join(LOGOS_DIR, local_filename)
+        bundled_station_path = os.path.join(SCRIPT_DIR, "logos", local_filename)
         logo_value = station.get("logo", "")
-        candidate_paths = [local_path]
+        candidate_paths = [local_path, bundled_station_path]
 
         if logo_value and not logo_value.startswith("http"):
             if os.path.isabs(logo_value):
@@ -2185,7 +2186,7 @@ class ModernRadioApp(QMainWindow):
         
         local_filename = sanitize_filename(station["name"])
         local_path = os.path.join(LOGOS_DIR, local_filename)
-        bundled_path = os.path.join(SCRIPT_DIR, "logos", station.get("logo", ""))
+        bundled_path = os.path.join(SCRIPT_DIR, "logos", local_filename)
         
         if os.path.exists(local_path):
             self.station_logo_pixmap = QPixmap(local_path)
@@ -2413,7 +2414,7 @@ class ModernRadioApp(QMainWindow):
                     continue
                 local_filename = sanitize_filename(station["name"])
                 local_path = os.path.join(LOGOS_DIR, local_filename)
-                bundled_path = os.path.join(SCRIPT_DIR, "logos", station.get("logo", ""))
+                bundled_path = os.path.join(SCRIPT_DIR, "logos", local_filename)
                 if not os.path.exists(local_path) and not os.path.isfile(bundled_path) and station.get("logo", "").startswith("http"):
                     worker = AlbumArtWorker(save_path_target=local_path)
                     worker.image_ready.connect(self.on_cover_flow_logo_ready)
@@ -2438,7 +2439,7 @@ class ModernRadioApp(QMainWindow):
                 
             local_filename = sanitize_filename(station["name"])
             local_path = os.path.join(LOGOS_DIR, local_filename)
-            bundled_path = os.path.join(SCRIPT_DIR, "logos", station.get("logo", ""))
+            bundled_path = os.path.join(SCRIPT_DIR, "logos", local_filename)
             
             if os.path.exists(local_path):
                 pix = QPixmap(local_path)
