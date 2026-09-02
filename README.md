@@ -21,27 +21,15 @@
 
 TuneBytes is available in two distinct editions. They share the radio concept and visual style but use different interfaces and runtimes.
 
-### TuneBytes Web — Browser and Docker edition
-
-This is the React interface served directly in a browser. It is the recommended edition for Docker, Unraid, reverse-proxy, and PWA installations.
-
-#### Station grid
-
-![TuneBytes Web station grid](docs/screenshots/station-grid.png)
-
-#### Cover flow
-
-![TuneBytes Web cover-flow station browser](docs/screenshots/cover-flow.png)
-
-#### Options and station management
-
-![TuneBytes Web options and station-management screen](docs/screenshots/options.png)
-
 ### TuneBytes Desktop — Native PyQt6 edition
 
-This is the native desktop application for Windows and Linux. It includes desktop-only features such as stream recording, listening history, a recordings library, and a compact mini-player.
+This is the native application for Windows and Linux. It includes desktop-only features such as stream recording, listening history, a recordings library, and a compact mini-player.
 
-#### Desktop cover-flow player
+#### Desktop grid mode
+
+![TuneBytes Desktop grid mode](docs/screenshots/desktop-grid.png)
+
+#### Desktop cover-flow mode
 
 ![TuneBytes Desktop cover-flow player](docs/screenshots/desktop-cover-flow.png)
 
@@ -53,7 +41,7 @@ This is the native desktop application for Windows and Linux. It includes deskto
 
 ![TuneBytes Desktop mini-player](docs/screenshots/desktop-mini-player.png)
 
-### TuneBytes Desktop visual effects
+#### Desktop visual effects
 
 The native desktop edition includes three selectable animated backgrounds.
 
@@ -61,28 +49,28 @@ The native desktop edition includes three selectable animated backgrounds.
 | --- | --- | --- |
 | ![TuneBytes Desktop Warp Speed effect](docs/screenshots/desktop-effects/warp-speed.gif) | ![TuneBytes Desktop Kinetic Sparks effect](docs/screenshots/desktop-effects/kinetic-sparks.gif) | ![TuneBytes Desktop Digital Rain effect](docs/screenshots/desktop-effects/digital-rain.gif) |
 
-## Preview
+### TuneBytes Web — Browser and Docker edition
 
-TuneBytes ships with a visual station library and supports custom station artwork.
+This is the React interface served directly in a browser. It is the recommended edition for Docker, Unraid, reverse-proxy, and PWA installations.
 
-<p align="center">
-  <img src="logos/dance_radio_uk.png" alt="Dance Radio UK logo" width="120">
-  &nbsp;&nbsp;
-  <img src="logos/radio_paradise.png" alt="Radio Paradise logo" width="120">
-  &nbsp;&nbsp;
-  <img src="logos/soma.png" alt="SomaFM logo" width="120">
-  &nbsp;&nbsp;
-  <img src="logos/the_rock.png" alt="The Rock logo" width="120">
-</p>
+#### Web station grid
 
-> Station names and logos above belong to their respective owners and are shown only to identify compatible streams. See [Third-party content and trademarks](#third-party-content-and-trademarks).
+![TuneBytes Web station grid](docs/screenshots/station-grid.png)
+
+#### Web cover flow
+
+![TuneBytes Web cover-flow station browser](docs/screenshots/cover-flow.png)
+
+#### Web options and station management
+
+![TuneBytes Web options and station-management screen](docs/screenshots/options.png)
 
 ## What is TuneBytes?
 
 TuneBytes is available in two clearly separated editions:
 
-- **TuneBytes Web** — a modern React/Vite application designed for browsers, Docker/Unraid self-hosting, reverse proxies, and PWA installation.
 - **TuneBytes Desktop** — a native PyQt6 application with playback, stream recording, listening history, mini-player mode, and local data persistence.
+- **TuneBytes Web** — a modern React/Vite application designed for browsers, Docker/Unraid self-hosting, reverse proxies, and PWA installation.
 
 The project includes a curated starter list of stations, but it is designed to be personalised with your own stream URLs, station names, icons, and local music folders.
 
@@ -198,6 +186,52 @@ The project includes a curated starter list of stations, but it is designed to b
 
 ## Quick start
 
+### TuneBytes Desktop
+
+#### Windows installer
+
+The automated Windows build produces `TuneBytes-Setup.exe`, a per-user installer that:
+
+- Installs TuneBytes under your local application directory without requiring administrator rights.
+- Creates a **TuneBytes** shortcut on the Windows Desktop.
+- Creates Start Menu shortcuts for TuneBytes and its uninstaller.
+- Stores settings, custom station logos, history, and recordings under `%LOCALAPPDATA%\TuneBytes`.
+
+[Download the latest TuneBytes Windows installer build](../../actions/workflows/build-windows-installer.yml)
+
+Open the newest successful run and download the **TuneBytes-Windows-Installer** artifact. Extract the downloaded ZIP and run `TuneBytes-Setup.exe`.
+
+#### Run TuneBytes Desktop from source
+
+Requirements:
+
+- Python 3.10 or newer
+- PyQt6
+- Platform multimedia codecs required by the streams you use
+
+```bash
+python -m venv .venv
+```
+
+Activate the virtual environment on Windows:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+On Linux or macOS:
+
+```bash
+source .venv/bin/activate
+```
+
+Install and run:
+
+```bash
+pip install -r requirements.txt
+python main.pyw
+```
+
 ### TuneBytes Web for development
 
 Requirements:
@@ -220,37 +254,6 @@ npm run build
 ```
 
 The generated site is written to `web/dist/`.
-
-### TuneBytes Desktop
-
-Requirements:
-
-- Python 3.10 or newer
-- PyQt6
-- Platform multimedia codecs required by the streams you use
-
-```bash
-python -m venv .venv
-```
-
-Activate the virtual environment:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-On Linux or macOS:
-
-```bash
-source .venv/bin/activate
-```
-
-Install and run:
-
-```bash
-pip install -r requirements.txt
-python main.pyw
-```
 
 ## Self-hosting with Docker
 
