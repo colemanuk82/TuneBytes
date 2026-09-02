@@ -1,12 +1,12 @@
 # Third-Party Content, Station Lists, and Trademark Notice
 
-Internet Radio is open-source player software. The repository also contains identifiers and links associated with third-party radio services. Those materials are not automatically covered by the project's MIT License.
+TuneBytes is open-source player software. The repository also contains identifiers and links associated with third-party radio services. Those materials are not automatically covered by the project's MIT License.
 
 ## Station names, logos, and trademarks
 
 The names, logos, service marks, and trademarks of radio stations and media organisations shown in the application belong to their respective owners.
 
-They are included solely for station identification and user convenience. Their presence does not imply that the station owner sponsors, endorses, operates, or is affiliated with Internet Radio or its contributors.
+They are included solely for station identification and user convenience. Their presence does not imply that the station owner sponsors, endorses, operates, or is affiliated with TuneBytes or its contributors.
 
 No trademark licence is granted by this repository. Anyone copying, publishing, packaging, or distributing the application must independently determine whether they have permission to include the bundled logos and branding. Redistributors may remove the `logos/` directory and supply their own permitted artwork.
 
@@ -14,7 +14,7 @@ No trademark licence is granted by this repository. Anyone copying, publishing, 
 
 The default station lists in `config.py` and `web/src/stations.js` are convenience references to streams believed to be reachable at the time they were added.
 
-Internet Radio:
+TuneBytes:
 
 - Does not own or operate third-party stations.
 - Does not host the listed third-party broadcasts.
@@ -27,7 +27,7 @@ Access to a stream may be subject to the station operator's terms, copyright rul
 
 ## SUB/WAVE
 
-SUB/WAVE is retained as the name of one configured station. It is distinct from the application name, which is **Internet Radio**. The Nginx route `/streams/subwave` is retained as a technical compatibility identifier.
+SUB/WAVE is retained as the name of one configured station. It is distinct from the application name, which is **TuneBytes**. The Nginx route `/streams/subwave` is retained as a technical compatibility identifier.
 
 ## Apple/iTunes artwork
 
