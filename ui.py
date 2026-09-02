@@ -2104,6 +2104,7 @@ class ModernRadioApp(QMainWindow):
                 candidate_paths.append(logo_value)
             else:
                 candidate_paths.append(os.path.join(LOGOS_DIR, logo_value))
+                candidate_paths.append(os.path.join(SCRIPT_DIR, "logos", logo_value))
                 candidate_paths.append(os.path.join(SCRIPT_DIR, logo_value))
 
         for path in candidate_paths:
@@ -2184,9 +2185,15 @@ class ModernRadioApp(QMainWindow):
         
         local_filename = sanitize_filename(station["name"])
         local_path = os.path.join(LOGOS_DIR, local_filename)
+        bundled_path = os.path.join(SCRIPT_DIR, "logos", station.get("logo", ""))
         
         if os.path.exists(local_path):
             self.station_logo_pixmap = QPixmap(local_path)
+            self.current_pixmap = self.station_logo_pixmap
+            self.update_dynamic_accent_color_from_pixmap(self.current_pixmap)
+            self.apply_scaled_artwork()
+        elif os.path.isfile(bundled_path):
+            self.station_logo_pixmap = QPixmap(bundled_path)
             self.current_pixmap = self.station_logo_pixmap
             self.update_dynamic_accent_color_from_pixmap(self.current_pixmap)
             self.apply_scaled_artwork()
@@ -2406,7 +2413,8 @@ class ModernRadioApp(QMainWindow):
                     continue
                 local_filename = sanitize_filename(station["name"])
                 local_path = os.path.join(LOGOS_DIR, local_filename)
-                if not os.path.exists(local_path) and station.get("logo", "").startswith("http"):
+                bundled_path = os.path.join(SCRIPT_DIR, "logos", station.get("logo", ""))
+                if not os.path.exists(local_path) and not os.path.isfile(bundled_path) and station.get("logo", "").startswith("http"):
                     worker = AlbumArtWorker(save_path_target=local_path)
                     worker.image_ready.connect(self.on_cover_flow_logo_ready)
                     worker.fetch(station["logo"])
@@ -2430,9 +2438,16 @@ class ModernRadioApp(QMainWindow):
                 
             local_filename = sanitize_filename(station["name"])
             local_path = os.path.join(LOGOS_DIR, local_filename)
+            bundled_path = os.path.join(SCRIPT_DIR, "logos", station.get("logo", ""))
             
             if os.path.exists(local_path):
                 pix = QPixmap(local_path)
+                if not pix.isNull():
+                    btn.setIcon(QIcon(pix))
+                elif self.view_mode == "tile":
+                    btn.setText(station["art"])
+            elif os.path.isfile(bundled_path):
+                pix = QPixmap(bundled_path)
                 if not pix.isNull():
                     btn.setIcon(QIcon(pix))
                 elif self.view_mode == "tile":
