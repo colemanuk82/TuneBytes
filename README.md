@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="icon.png" alt="Internet Radio icon" width="150">
+  <img src="icon.png" alt="TuneBytes icon" width="150">
 </p>
 
-<h1 align="center">Internet Radio</h1>
+<h1 align="center">TuneBytes</h1>
 
 <p align="center">
   A neon-styled, self-hostable internet radio player for the web, Windows/Linux desktop, Docker, and Unraid.
@@ -19,7 +19,7 @@
 
 ## Preview
 
-Internet Radio ships with a visual station library and supports custom station artwork.
+TuneBytes ships with a visual station library and supports custom station artwork.
 
 <p align="center">
   <img src="logos/dance_radio_uk.png" alt="Dance Radio UK logo" width="120">
@@ -33,9 +33,9 @@ Internet Radio ships with a visual station library and supports custom station a
 
 > Station names and logos above belong to their respective owners and are shown only to identify compatible streams. See [Third-party content and trademarks](#third-party-content-and-trademarks).
 
-## What is Internet Radio?
+## What is TuneBytes?
 
-Internet Radio is a personal radio dashboard built in two forms:
+TuneBytes is a personal radio dashboard built in two forms:
 
 - A modern React/Vite web application, designed for browsers, self-hosting, and PWA installation.
 - A feature-rich PyQt6 desktop application with native playback, stream recording, listening history, mini-player mode, and local data persistence.
@@ -236,7 +236,7 @@ http://YOUR-SERVER-IP:8080
 For an Unraid deployment, copy the project to an appdata directory such as:
 
 ```text
-/mnt/user/appdata/internet-radio/
+/mnt/user/appdata/tunebytes/
 ```
 
 Add `docker-compose.web.yml` in Compose Manager and deploy the stack. Web preferences are stored in each browser's `localStorage`, so every browser/device can have its own layout, theme, volume, and custom station configuration.
@@ -314,7 +314,7 @@ Only include streams you are permitted to access and redistribute. Stream URLs c
 
 ## Privacy
 
-Internet Radio has no project-operated account system or analytics service.
+TuneBytes has no project-operated account system or analytics service.
 
 - Web preferences and custom stations are stored in the browser.
 - Desktop settings, history, logos, and recordings are stored locally or in the configured Docker volume.
