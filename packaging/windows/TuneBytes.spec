@@ -5,13 +5,13 @@ from PyInstaller.utils.hooks import collect_submodules
 hiddenimports = collect_submodules("PyQt6.QtMultimedia")
 
 a = Analysis(
-    ["main.pyw"],
+    ["../../main.pyw"],
     pathex=[],
     binaries=[],
     datas=[
-        ("icon.ico", "."),
-        ("icon.png", "."),
-        ("logos", "logos"),
+        ("../../icon.ico", "."),
+        ("../../icon.png", "."),
+        ("../../logos", "logos"),
     ],
     hiddenimports=hiddenimports,
     hookspath=[],
@@ -40,7 +40,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=["icon.ico"],
+    icon=["../../icon.ico"],
 )
 
 coll = COLLECT(
