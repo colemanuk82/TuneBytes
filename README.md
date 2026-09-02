@@ -19,17 +19,47 @@
 
 ## Screenshots
 
-### Station grid
+TuneBytes is available in two distinct editions. They share the radio concept and visual style but use different interfaces and runtimes.
 
-![TuneBytes station grid](docs/screenshots/station-grid.png)
+### TuneBytes Web — Browser and Docker edition
 
-### Cover flow
+This is the React interface served directly in a browser. It is the recommended edition for Docker, Unraid, reverse-proxy, and PWA installations.
 
-![TuneBytes cover-flow station browser](docs/screenshots/cover-flow.png)
+#### Station grid
 
-### Options and station management
+![TuneBytes Web station grid](docs/screenshots/station-grid.png)
 
-![TuneBytes options and station-management screen](docs/screenshots/options.png)
+#### Cover flow
+
+![TuneBytes Web cover-flow station browser](docs/screenshots/cover-flow.png)
+
+#### Options and station management
+
+![TuneBytes Web options and station-management screen](docs/screenshots/options.png)
+
+### TuneBytes Desktop — Native PyQt6 edition
+
+This is the native desktop application for Windows and Linux. It includes desktop-only features such as stream recording, listening history, a recordings library, and a compact mini-player.
+
+#### Desktop cover-flow player
+
+![TuneBytes Desktop cover-flow player](docs/screenshots/desktop-cover-flow.png)
+
+#### Desktop configuration, history, and recordings
+
+![TuneBytes Desktop configuration screen](docs/screenshots/desktop-options.png)
+
+#### Desktop mini-player
+
+![TuneBytes Desktop mini-player](docs/screenshots/desktop-mini-player.png)
+
+### TuneBytes Desktop visual effects
+
+The native desktop edition includes three selectable animated backgrounds.
+
+| Warp Speed | Kinetic Sparks | Digital Rain |
+| --- | --- | --- |
+| ![TuneBytes Desktop Warp Speed effect](docs/screenshots/desktop-effects/warp-speed.gif) | ![TuneBytes Desktop Kinetic Sparks effect](docs/screenshots/desktop-effects/kinetic-sparks.gif) | ![TuneBytes Desktop Digital Rain effect](docs/screenshots/desktop-effects/digital-rain.gif) |
 
 ## Preview
 
@@ -49,10 +79,10 @@ TuneBytes ships with a visual station library and supports custom station artwor
 
 ## What is TuneBytes?
 
-TuneBytes is a personal radio dashboard built in two forms:
+TuneBytes is available in two clearly separated editions:
 
-- A modern React/Vite web application, designed for browsers, self-hosting, and PWA installation.
-- A feature-rich PyQt6 desktop application with native playback, stream recording, listening history, mini-player mode, and local data persistence.
+- **TuneBytes Web** — a modern React/Vite application designed for browsers, Docker/Unraid self-hosting, reverse proxies, and PWA installation.
+- **TuneBytes Desktop** — a native PyQt6 application with playback, stream recording, listening history, mini-player mode, and local data persistence.
 
 The project includes a curated starter list of stations, but it is designed to be personalised with your own stream URLs, station names, icons, and local music folders.
 
@@ -114,7 +144,7 @@ The project includes a curated starter list of stations, but it is designed to b
 - Previous/next local-track controls.
 - Folder access remains subject to browser permissions; browser-created folder stations are session-based.
 
-### Desktop-only features
+### TuneBytes Desktop features
 
 - Native PyQt6 interface and multimedia playback.
 - Record the currently playing live stream to timestamped MP3 files.
@@ -127,7 +157,7 @@ The project includes a curated starter list of stations, but it is designed to b
 - Drag-and-drop aware desktop controls.
 - Local-file playback through the native media engine.
 
-### Web and PWA features
+### TuneBytes Web features
 
 - Responsive React 19 interface.
 - Vite development and production builds.
@@ -168,7 +198,7 @@ The project includes a curated starter list of stations, but it is designed to b
 
 ## Quick start
 
-### Web app for development
+### TuneBytes Web for development
 
 Requirements:
 
@@ -191,7 +221,7 @@ npm run build
 
 The generated site is written to `web/dist/`.
 
-### Desktop app
+### TuneBytes Desktop
 
 Requirements:
 
@@ -224,7 +254,7 @@ python main.pyw
 
 ## Self-hosting with Docker
 
-### Recommended: React web application
+### Recommended: TuneBytes Web
 
 The web container builds the Vite application and serves it through Nginx.
 
@@ -255,7 +285,7 @@ For an Unraid deployment, copy the project to an appdata directory such as:
 
 Add `docker-compose.web.yml` in Compose Manager and deploy the stack. Web preferences are stored in each browser's `localStorage`, so every browser/device can have its own layout, theme, volume, and custom station configuration.
 
-### Alternative: PyQt desktop through noVNC
+### Alternative: TuneBytes Desktop through noVNC
 
 The desktop container runs the PyQt application inside a virtual display and exposes it through noVNC.
 
